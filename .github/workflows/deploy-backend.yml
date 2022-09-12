@@ -12,6 +12,8 @@ jobs:
   Deploy-Backend:
     environment:
       name: ${{ github.event.inputs.environment_name }}
+    env:
+      appname: app-engagement-organizer-be
           
     runs-on: ubuntu-latest
 
@@ -46,7 +48,7 @@ jobs:
       - name: Deploy Backend
         uses: azure/webapps-deploy@v2
         with:
-          app-name: ${{secrets[APPSERVICENAME]}}
+          app-name: ${{ env.appname }}
           package: ./deploy
       
           

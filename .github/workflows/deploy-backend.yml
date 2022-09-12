@@ -12,9 +12,7 @@ jobs:
   Deploy-Backend:
     environment:
       name: ${{ github.event.inputs.environment_name }}
-    env:
-      appname: ${{ secrets.APPSERVICENAME }}
-      
+          
     runs-on: ubuntu-latest
 
     steps:
@@ -48,7 +46,7 @@ jobs:
       - name: Deploy Backend
         uses: azure/webapps-deploy@v2
         with:
-          app-name: ${{ env.appname }}
+          app-name: ${{secrets[APPSERVICENAME]}}
           package: ./deploy
       
           
